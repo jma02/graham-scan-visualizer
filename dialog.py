@@ -1,9 +1,9 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QFileDialog, QLabel
-from PyQt5 import uic
-import numpy as np
+import convexhull
 import sys
 
-import convexhull
+import numpy as np
+from PyQt5 import uic
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QFileDialog, QLabel
 
 
 class UI(QMainWindow):
@@ -26,7 +26,7 @@ class UI(QMainWindow):
         coordinates = np.genfromtxt(fname[0], delimiter=",")
         if fname:
             self.coords.setText(str(coordinates))
-        convexhull.cvh(fname[0])
+        convexhull.load_data(fname[0])
         return fname[0]
 
 
