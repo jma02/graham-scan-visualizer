@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
+from matplotlib import animation
 import numpy as np
-import scipy
+from scipy import linalg
 
 
 def load_data(fname: str) -> np.ndarray:
@@ -13,6 +14,16 @@ def polar_angle_sort(p1, p2) -> float:
         return float('inf')
     else:
         return 1.0 * (p1[1] - p2[1]) / (p1[0] - p2[0])
+
+
+def is_left_turn(p1: list, p2: list, p3: list) -> bool:
+    matrix = np.array(
+        [[p1[0], p2[0], p3[0]],
+         [p1[1], p2[1], p3[1]],
+         [1.0,    1.0,   1.0]]
+    )
+    return True if linalg.det(matrix) > 0 else False
+
 
 # Creates and saves a .gif file of finding convex hull using graham scan
 def graham_scan(coordinates: np.ndarray):
@@ -29,13 +40,23 @@ def graham_scan(coordinates: np.ndarray):
     sorted_points.sort(key=lambda p: (polar_angle_sort(p, starting_point), -p[1], p[0]))
     sorted_points = np.array(sorted_points)
 
-    x,y = sorted_points.T
+    x, y = sorted_points.T
 
     plt.scatter(x, y, cmap="jet")
     plt.savefig('init.png')
 
     # step 3 of graham scan -- using a stack, find the convex hull
-    hull = [] # stack
+    hull = []  # stack
+    for i in sorted_points:
+        while len(hull) > 2 and not is_left_turn(hull[-3], hull[-2], hull[-1]):
+            hull.pop(-2)
+        hull.append(i.tolist())
+    x,y = np.array(hull).T
+    plt.plot(x, y)
+    plt.plot((x[0],x[-1]), (y[0],y[-1]))
+    print(hull)
+    plt.savefig("hull.png")
+
 
 
 
