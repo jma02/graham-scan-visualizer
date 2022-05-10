@@ -5,15 +5,15 @@ from scipy import linalg
 
 
 def load_data(fname: str) -> np.ndarray:
-    coordinates = np.genfromtxt(fname, delimiter=",")
+    coordinates = np.unique(np.genfromtxt(fname, delimiter=","), axis=0)
     return coordinates
 
 
 def polar_angle_sort(p1, p2) -> float:
-    if p1[0] == p2[0]:
+    if p1[1] == p2[1]:
         return float('inf')
     else:
-        return 1.0 * (p1[1] - p2[1]) / (p1[0] - p2[0])
+        return -(p2[0]-p1[0]) / (p2[1]-p1[1])
 
 
 def is_left_turn(p1: list, p2: list, p3: list) -> bool:
@@ -37,7 +37,7 @@ def graham_scan(coordinates: np.ndarray):
 
     # step 2 of graham scan -- sort points by polar angle to starting point
     sorted_points = coordinates.tolist()
-    sorted_points.sort(key=lambda p: (polar_angle_sort(p, starting_point), -p[1], p[0]))
+    sorted_points.sort(key=lambda p: polar_angle_sort(p, starting_point))
     sorted_points = np.array(sorted_points)
 
     x, y = sorted_points.T
@@ -47,13 +47,15 @@ def graham_scan(coordinates: np.ndarray):
 
     # step 3 of graham scan -- using a stack, find the convex hull
     hull = []  # stack
+    print(starting_point)
+    print(sorted_points)
     for i in sorted_points:
         while len(hull) > 2 and not is_left_turn(hull[-3], hull[-2], hull[-1]):
             hull.pop(-2)
         hull.append(i.tolist())
     x,y = np.array(hull).T
     plt.plot(x, y)
-    plt.plot((x[0],x[-1]), (y[0],y[-1]), 'c')
+    plt.plot((x[0],x[-1]),(y[0],y[-1]), 'b')
     print(hull)
     plt.savefig("hull.png")
 
