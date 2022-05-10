@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>ConvexHullVisualizer</class>
+ <widget class="QMainWindow" name="ConvexHullVisualizer">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -91,6 +91,7 @@
     </property>
    </widget>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -107,7 +108,6 @@
    </widget>
    <addaction name="menuConvex_Hull_Visualizer"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
