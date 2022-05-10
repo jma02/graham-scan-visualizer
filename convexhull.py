@@ -53,7 +53,7 @@ def graham_scan(coordinates: np.ndarray):
         hull.append(i.tolist())
     x,y = np.array(hull).T
     plt.plot(x, y)
-    plt.plot((x[0],x[-1]), (y[0],y[-1]))
+    plt.plot((x[0],x[-1]), (y[0],y[-1]), 'c')
     print(hull)
     plt.savefig("hull.png")
 
