@@ -1,3 +1,5 @@
+from PyQt5.QtGui import QPixmap
+
 import convexhull
 import sys
 
@@ -22,15 +24,14 @@ class UI(QMainWindow):
         # show app
         self.show()
 
-    def fileclicker(self) -> str:
+    def fileclicker(self):
         fname = QFileDialog.getOpenFileName(self, "Open CSV File", "~", "CSV Files(*.csv);;TXT Files(*.txt)")
         coordinates = convexhull.load_data(fname[0])
         if fname:
             self.coords.setText(str(coordinates))
         convexhull.graham_scan(coordinates)
-        self.display.setPixmap("/hull.png")
-        return fname[0]
-
+        pixmap = QPixmap("hull.png")
+        self.display.setPixmap(pixmap)
 
 app = QApplication(sys.argv)
 UIWindow = UI()

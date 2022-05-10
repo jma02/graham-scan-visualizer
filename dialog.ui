@@ -81,7 +81,10 @@
      <bool>true</bool>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
