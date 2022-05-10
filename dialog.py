@@ -16,6 +16,7 @@ class UI(QMainWindow):
         # define widgets
         self.filesearch = self.findChild(QPushButton, "pushButton")
         self.coords = self.findChild(QLabel, "label")
+        self.display = self.findChild(QLabel, "label_2")
         # click dropdown box
         self.filesearch.clicked.connect(self.fileclicker)
         # show app
@@ -23,10 +24,11 @@ class UI(QMainWindow):
 
     def fileclicker(self) -> str:
         fname = QFileDialog.getOpenFileName(self, "Open CSV File", "~", "CSV Files(*.csv);;TXT Files(*.txt)")
-        coordinates = np.genfromtxt(fname[0], delimiter=",")
+        coordinates = convexhull.load_data(fname[0])
         if fname:
             self.coords.setText(str(coordinates))
-        convexhull.load_data(fname[0])
+        convexhull.graham_scan(coordinates)
+        self.display.setPixmap("/hull.png")
         return fname[0]
 
 
