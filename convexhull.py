@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
-from matplotlib import animation
 import numpy as np
 from scipy import linalg
+from matplotlib.animation import FuncAnimation
 
 
 def load_data(fname: str) -> np.ndarray:
@@ -26,7 +26,8 @@ def is_left_turn(p1: list, p2: list, p3: list) -> bool:
 
 
 # Creates and saves a .gif file of finding convex hull using graham scan
-def graham_scan(coordinates: np.ndarray):
+def graham_scan(coordinates: np.ndarray) -> np.ndarray:
+    plt.style.use('Solarize_Light2')
     # step 1 of graham scan -- find the minimum y-coordinate, if more than 1, find max x value of set
     y_min = np.amin(coordinates, axis=0)  # find minimum y value
     y_mins = y_min.reshape([1, 2])
@@ -39,9 +40,9 @@ def graham_scan(coordinates: np.ndarray):
     sorted_points = coordinates.tolist()
     sorted_points.sort(key=lambda p: polar_angle_sort(p, starting_point))  # convert to python list to use custom sort
     sorted_points = np.array(sorted_points)
-
+    print(sorted_points)
     x, y = sorted_points.T
-    plt.scatter(x, y, cmap="jet")
+    plt.scatter(x, y, color='blue')
     plt.savefig('init.png')  # save an initial image of our points
 
     # step 3 of graham scan -- using a stack, find the convex hull
@@ -53,13 +54,40 @@ def graham_scan(coordinates: np.ndarray):
         hull.append(i.tolist())
 
     x, y = np.array(hull).T
-    plt.plot(x, y)
-    plt.plot((x[0], x[-1]), (y[0], y[-1]), 'b')
+    plt.plot(x, y, color='black')
+    plt.plot((x[0], x[-1]), (y[0], y[-1]), 'black')
     plt.savefig("hull.png")  # save initial image of convex hull
+    return sorted_points
 
+
+def instructions(sorted_points: np.ndarray) -> dict:
+    instructions_list = {}
+    hull = []
+    j = 0
+    for i in range(0, len(sorted_points)):
+        while len(hull) > 2 and not is_left_turn(hull[-3], hull[-2], hull[-1]):
+            instructions_list[j] = "POP:"+str(hull[-2])
+            j += 1
+            hull.pop(-2)
+        hull.append(sorted_points[i].tolist())
+        instructions_list[j] = "PUSH:"+str(sorted_points[i])
+        j += 1
+    return instructions_list
+
+def call_animate(sorted_points: np.ndarray, hull: list):
+    fig = plt.figure()
+    ax = plt.subplot()
+    instructions_list = instructions(sorted_points)
+    anim = FuncAnimation(fig, animate, frame=np.arange(0,len(instructions_list)),
+                         fargs=instructions_list,)
+
+
+def animate(i: int, instructions_list: dict):
+    pass
 
 def main():
     c = load_data("/Users/johnma/PycharmProjects/Convex-hull-visualization/sample.csv")
-    graham_scan(c)
-
+    s = graham_scan(c)
+    i = instructions(s)
+    print(i)
 main()
