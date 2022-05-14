@@ -3,7 +3,6 @@ import numpy as np
 from scipy import linalg
 from matplotlib.animation import FuncAnimation
 
-
 def load_data(fname: str) -> np.ndarray:
     coordinates = np.unique(np.genfromtxt(fname, delimiter=","), axis=0)
     return coordinates
@@ -40,7 +39,6 @@ def graham_scan(coordinates: np.ndarray) -> np.ndarray:
     sorted_points = coordinates.tolist()
     sorted_points.sort(key=lambda p: polar_angle_sort(p, starting_point))  # convert to python list to use custom sort
     sorted_points = np.array(sorted_points)
-    print(sorted_points)
     x, y = sorted_points.T
     plt.scatter(x, y, color='blue')
     plt.savefig('init.png')  # save an initial image of our points
@@ -54,40 +52,14 @@ def graham_scan(coordinates: np.ndarray) -> np.ndarray:
         hull.append(i.tolist())
 
     x, y = np.array(hull).T
-    plt.plot(x, y, color='black')
-    plt.plot((x[0], x[-1]), (y[0], y[-1]), 'black')
+    plt.plot(x, y, marker='o', color='blue')
+    plt.plot((x[0], x[-1]), (y[0], y[-1]), marker='o', color='blue')
     plt.savefig("hull.png")  # save initial image of convex hull
     return sorted_points
 
 
-def instructions(sorted_points: np.ndarray) -> dict:
-    instructions_list = {}
-    hull = []
-    j = 0
-    for i in range(0, len(sorted_points)):
-        while len(hull) > 2 and not is_left_turn(hull[-3], hull[-2], hull[-1]):
-            instructions_list[j] = "POP:"+str(hull[-2])
-            j += 1
-            hull.pop(-2)
-        hull.append(sorted_points[i].tolist())
-        instructions_list[j] = "PUSH:"+str(sorted_points[i])
-        j += 1
-    return instructions_list
-
-def call_animate(sorted_points: np.ndarray, hull: list):
-    fig = plt.figure()
-    ax = plt.subplot()
-    instructions_list = instructions(sorted_points)
-    anim = FuncAnimation(fig, animate, frame=np.arange(0,len(instructions_list)),
-                         fargs=instructions_list,)
-
-
-def animate(i: int, instructions_list: dict):
-    pass
-
 def main():
     c = load_data("/Users/johnma/PycharmProjects/Convex-hull-visualization/sample.csv")
     s = graham_scan(c)
-    i = instructions(s)
-    print(i)
+
 main()

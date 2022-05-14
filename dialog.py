@@ -3,7 +3,6 @@ from PyQt5.QtGui import QPixmap
 import convexhull
 import sys
 
-import numpy as np
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QFileDialog, QLabel
 
@@ -32,6 +31,7 @@ class UI(QMainWindow):
         convexhull.graham_scan(coordinates)
         pixmap = QPixmap("hull.png")
         self.display.setPixmap(pixmap)
+
 
 app = QApplication(sys.argv)
 UIWindow = UI()
