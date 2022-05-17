@@ -25,7 +25,6 @@ def is_left_turn(p1: list, p2: list, p3: list) -> bool:
     return True if linalg.det(matrix) > 0 else False  # negative determinant implies clockwise orientation of vectors
 
 
-# Creates and saves a .gif file of finding convex hull using graham scan
 def graham_scan(coordinates: np.ndarray) -> np.ndarray:
     plt.style.use('Solarize_Light2')
     # step 1 of graham scan -- find the minimum y-coordinate, if more than 1, find max x value of set
@@ -57,7 +56,6 @@ def graham_scan(coordinates: np.ndarray) -> np.ndarray:
     plt.plot((x[0], x[-1]), (y[0], y[-1]), marker='o', color='blue')
     plt.savefig("hull.png")  # save initial image of convex hull
     return sorted_points
-
 
 
 class Animator:
@@ -108,4 +106,3 @@ class Animator:
 def save_animation(sorted_points: np.ndarray):
     new_animator = Animator(sorted_points)
     new_animator.animate()
-

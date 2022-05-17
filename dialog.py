@@ -42,7 +42,6 @@ class UI(QMainWindow):
         self.loading.setFrameShape(QFrame.StyledPanel)
         self.loading.setText("Loading -- this may take a while")
 
-
     def fileclicker(self):
         self.loadingtext()
         fname, _ = QFileDialog.getOpenFileName(self, "Open CSV File", "~", "CSV Files(*.csv);;TXT Files(*.txt)")
