@@ -59,7 +59,6 @@ def graham_scan(coordinates: np.ndarray) -> np.ndarray:
     return sorted_points
 
 
-# global scope plot
 
 class Animator:
     anim_hull = []
