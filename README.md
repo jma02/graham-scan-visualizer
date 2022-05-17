@@ -10,6 +10,10 @@ python dialog.py
 
 Currently, only CSV files are supported for use. See [sample.csv](https://github.com/johnma02/Convex-hull-visualization/blob/master/sample.csv) for a formatting guide.
 ### Dependencies
+Get started with Python installation [here](https://www.python.org/downloads/).
+
+
+If your machine already has Python, or after you've installed Python, ensure that your machine has PIP installed. 
 **If your machine has Anaconda installed, Matplotlib and Numpy will already be available and ready for use.**
 
 **PyQt5 will still need to be installed.**
