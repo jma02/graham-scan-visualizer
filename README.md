@@ -3,13 +3,13 @@
 ![alt-text](https://github.com/johnma02/Convex-hull-visualization/blob/master/gscan.gif)
 Using [Matplotlib](https://matplotlib.org/), [Numpy](https://numpy.org/), [SciPy](https://scipy.org/), and [Qt](https://www.qt.io/qt-for-python) for Python, this application visualizes the implementation of the Graham Scan, and finds the convex hull of a finite set of points in ℝ2.
 ### Running
-If all dependencies are present, run the following shell command to run the application
+If all dependencies are present, run the following shell command to run the application.
 ```shell
 python dialog.py
 ```
 ### Dependencies
-**If your machine has Anaconda installed, Matplotlib and Numpy will already be available and ready for use.**
-Otherwise, check run the following shell command to check if your machine has PIP installed.
+**If your machine has Anaconda installed, Matplotlib and Numpy will already be available and ready for use. PyQt5 will still need to be installed.**
+Run the following shell command to check if your machine has PIP installed.
 #### Linux/MacOS
 ```shell
 python -m ensurepip --upgrade
@@ -19,7 +19,7 @@ python -m ensurepip --upgrade
 py -m ensurepip --upgrade
 
 ```
-If your machine does not have PIP installed, follow the instructions on [this website](https://pip.pypa.io/en/stable/installation/)
+If your machine does not have PIP installed, follow the instructions on [this website](https://pip.pypa.io/en/stable/installation/) to install PIP.
 After ensuring your machine has PIP, run the following PIP commands.
 #### Matplotlib
 ```shell
