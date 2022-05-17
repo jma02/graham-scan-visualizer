@@ -8,7 +8,11 @@ If all dependencies are present, run the following shell command to run the appl
 python dialog.py
 ```
 ### Dependencies
-**If your machine has Anaconda installed, Matplotlib and Numpy will already be available and ready for use. PyQt5 will still need to be installed.**
+**If your machine has Anaconda installed, Matplotlib and Numpy will already be available and ready for use. 
+
+PyQt5 will still need to be installed.**
+
+
 Run the following shell command to check if your machine has PIP installed.
 #### Linux/MacOS
 ```shell
