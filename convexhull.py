@@ -65,8 +65,7 @@ class Animator:
     anim_hull = []
     instructions_list = {}
     sorted_points = None
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
+    fig, ax = plt.subplots()
 
     def __init__(self, sorted_points: np.ndarray):
         self.instructions_list = self.instructions_compiler(sorted_points)
@@ -89,6 +88,7 @@ class Animator:
     def update(self, frame):
         plt.style.use('Solarize_Light2')
         self.ax.clear()
+        self.ax.grid(False)
         if self.instructions_list[frame][0] == 'Push':
             self.anim_hull.append(self.instructions_list[frame][1])
             color = 'blue'
@@ -106,11 +106,7 @@ class Animator:
         anim.save('gscan.gif', fps=10)
 
 
-def main():
-    data = load_data("/Users/johnma/PycharmProjects/Convex-hull-visualization/sample.csv")
-    sorted_points = graham_scan(data)
+def save_animation(sorted_points: np.ndarray):
     new_animator = Animator(sorted_points)
     new_animator.animate()
 
-
-main()
