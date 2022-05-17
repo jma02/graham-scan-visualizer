@@ -7,6 +7,8 @@ If all dependencies are present, run the following shell command to run the appl
 ```shell
 python dialog.py
 ```
+
+Currently, only CSV files are supported for use. See [sample.csv](https://github.com/johnma02/Convex-hull-visualization/blob/master/sample.csv) for a formatting guide.
 ### Dependencies
 **If your machine has Anaconda installed, Matplotlib and Numpy will already be available and ready for use.**
 
