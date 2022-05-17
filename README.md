@@ -2,7 +2,11 @@
 [The Graham Scan](https://mathweb.ucsd.edu/~ronspubs/72_10_convex_hull.pdf) is one of the most well-known algorithms in computing history.
 ![alt-text](https://github.com/johnma02/Convex-hull-visualization/blob/master/gscan.gif)
 Using [Matplotlib](https://matplotlib.org/), [Numpy](https://numpy.org/), [SciPy](https://scipy.org/), and [Qt](https://www.qt.io/qt-for-python) for Python, this application visualizes the implementation of the Graham Scan, and finds the convex hull of a finite set of points in ℝ2.
-
+### Running
+If all dependencies are present, run the following shell command to run the application
+```shell
+python dialog.py
+```
 ### Dependencies
 **If your machine has Anaconda installed, Matplotlib and Numpy will already be available and ready for use.**
 Otherwise, check run the following shell command to check if your machine has PIP installed.
