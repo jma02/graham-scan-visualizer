@@ -54,3 +54,7 @@ pip install numpy
 ```shell
 pip install PyQt5
 ```
+#### SciPy
+```shell
+pip install scipy
+```
