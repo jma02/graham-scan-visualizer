@@ -10,7 +10,7 @@ python dialog.py
 
 Currently, only CSV files are supported for use. See [sample.csv](https://github.com/johnma02/Convex-hull-visualization/blob/master/sample.csv) for a formatting guide.
 ### Dependencies
-Get started with Python installation [here](https://www.python.org/downloads/).
+Get started with Python installation [here](https://www.python.org/downloads/) (Python 3.X ≥ **required**).
 
 
 If your machine already has Python, or after you've installed Python, ensure that your machine has PIP installed. 
@@ -18,6 +18,18 @@ If your machine already has Python, or after you've installed Python, ensure tha
 
 **PyQt5 will still need to be installed.**
 
+### Platform Dependent Instructions
+Depending on your platform, you may be able to use your native package manager to retrieve python dependencies. For example, on...
+#### Debian/Ubuntu
+```shell
+sudo apt-get install python3-matplotlib
+```
+ 
+Consult your platform's package manager's documentation for concise instructions on installing each dependency individually.
+
+
+Alternatively, one can use PIP to retrieve dependencies.
+### PIP
 
 Run the following shell command to check if your machine has PIP installed.
 #### Linux/MacOS
@@ -27,7 +39,6 @@ python -m ensurepip --upgrade
 #### Windows
 ```shell
 py -m ensurepip --upgrade
-
 ```
 If your machine does not have PIP installed, follow the instructions on [this website](https://pip.pypa.io/en/stable/installation/) to install PIP.
 After ensuring your machine has PIP, run the following PIP commands.
