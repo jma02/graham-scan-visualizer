@@ -9,22 +9,23 @@ Using [Matplotlib](https://matplotlib.org/), [Numpy](https://numpy.org/), [SciPy
 ### Running
 If all dependencies are present, run the following shell command to run the application.
 ```shell
-python dialog.py
+python app.py
 ```
 
-Currently, only CSV files are supported for use. See [sample.csv](https://github.com/johnma02/Convex-hull-visualization/blob/master/sample.csv) for a formatting guide.
+Currently, only CSV files are supported for use. See [sample.csv](https://github.com/johnma02/Convex-hull-visualization/blob/master/csv_sample_files/sample.csv) for a formatting guide.
 
 
 ### Dependencies
-Get started with Python installation [here](https://www.python.org/downloads/) (Python 3.X ≥ **required**).
+To get started, install Python [here](https://www.python.org/downloads/) (Python 3.X ≥ **required**).
 
 
 If your machine already has Python, or after you've installed Python, ensure that your machine has PIP installed. 
 **If your machine has Anaconda installed, Matplotlib and Numpy will already be available and ready for use.**
+**If you can install Anaconda, do so -- this will make this process a lot easier.**
 
 **PyQt5 will still need to be installed.**
 
-### Platform Dependent Instructions
+### Packages
 Depending on your platform, you may be able to use your native package manager to retrieve python dependencies. For example, on...
 #### Debian/Ubuntu
 ```shell
@@ -59,8 +60,4 @@ pip install numpy
 #### PyQt5
 ```shell
 pip install PyQt5
-```
-#### SciPy
-```shell
-pip install scipy
 ```
