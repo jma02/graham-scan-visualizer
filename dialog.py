@@ -20,6 +20,7 @@ class UI(QMainWindow):
         # load ui file
         uic.loadUi("dialog.ui", self)
 
+        self.setWindowTitle("Convex Hull Visualizer")
         # define widgets
         self.filesearch = self.findChild(QPushButton, "pushButton")
         self.coords = self.findChild(QLabel, "label")

@@ -25,7 +25,6 @@ def is_left_turn(p1: list, p2: list, p3: list) -> bool:
 
 
 def graham_scan(coordinates: np.ndarray) -> np.ndarray:
-    plt.style.use('Solarize_Light2')
     # step 1 of graham scan -- find the minimum y-coordinate, if more than 1, find max x value of set
     y_min = np.amin(coordinates, axis=0)  # find minimum y value
     y_mins = y_min.reshape([1, 2])
