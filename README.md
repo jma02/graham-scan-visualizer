@@ -16,27 +16,23 @@ Currently, only CSV files are supported for use. See [sample.csv](https://github
 
 
 ### Dependencies
-To get started, install Python [here](https://www.python.org/downloads/) (Python 3.X ≥ **required**).
+**If your machine has [Anaconda](https://www.anaconda.com/) installed, Python, Matplotlib, PiP, and Numpy will already be available and ready for use.**
 
 
-If your machine already has Python, or after you've installed Python, ensure that your machine has PIP installed. 
-**If your machine has Anaconda installed, Matplotlib and Numpy will already be available and ready for use.**
-**If you can install Anaconda, do so -- this will make this process a lot easier.**
+*If you can install Anaconda, do so -- this will make this process a lot easier.*
+
 
 **PyQt5 will still need to be installed.**
 
+
+To get started, install Python [here](https://www.python.org/downloads/) (Python 3.X ≥ **required**).
+
+
+If your machine already has Python, or after you've installed Python, ensure that your machine has [PIP](https://pypi.org/project/pip/) installed. 
+
 ### Packages
-Depending on your platform, you may be able to use your native package manager to retrieve python dependencies. For example, on...
-#### Debian/Ubuntu
-```shell
-sudo apt-get install python3-matplotlib
-```
- 
-Consult your platform's package manager's documentation for concise instructions on installing each dependency individually.
-
-
-Alternatively, one can use PIP to retrieve dependencies.
-### PIP
+Use pip to retrieve dependencies.
+### pip
 
 Run the following shell command to check if your machine has PIP installed.
 #### Linux/MacOS
@@ -51,7 +47,7 @@ If your machine does not have PIP installed, follow the instructions on [this we
 After ensuring your machine has PIP, run the following PIP commands.
 #### Matplotlib
 ```shell
-python -m pip install -U matplotlib
+pip install matplotlib
 ```
 #### Numpy
 ```shell
@@ -61,3 +57,13 @@ pip install numpy
 ```shell
 pip install PyQt5
 ```
+
+
+Depending on your platform, you may be also be able to use your native package manager to retrieve python dependencies. For example, on...
+#### Debian/Ubuntu
+```shell
+sudo apt-get install python3-matplotlib
+```
+
+
+Consult your platform's package manager's documentation for concise instructions on installing each dependency individually.
