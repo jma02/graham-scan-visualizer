@@ -1,7 +1,9 @@
 ### Visualizing Graham's Convex Hull Algorithm Using Python
 [The Graham Scan](https://mathweb.ucsd.edu/~ronspubs/72_10_convex_hull.pdf) is one of the most well-known algorithms in computing history.
 ![alt-text](https://github.com/johnma02/Convex-hull-visualization/blob/master/gscan.gif)
-Using [Matplotlib](https://matplotlib.org/), [Numpy](https://numpy.org/), [SciPy](https://scipy.org/), and [Qt](https://www.qt.io/qt-for-python) for Python, this application visualizes the implementation of the Graham Scan, and finds the [convex hull](https://mathworld.wolfram.com/ConvexHull.html) of a finite set of points in $$ \math_bb^{2} $$.
+Using [Matplotlib](https://matplotlib.org/), [Numpy](https://numpy.org/), [SciPy](https://scipy.org/), and [Qt](https://www.qt.io/qt-for-python) for Python, this application visualizes the implementation of the Graham Scan, and finds the [convex hull](https://mathworld.wolfram.com/ConvexHull.html) of a finite set of points in ℝ².
+
+
 ### Running
 If all dependencies are present, run the following shell command to run the application.
 ```shell
@@ -9,6 +11,8 @@ python dialog.py
 ```
 
 Currently, only CSV files are supported for use. See [sample.csv](https://github.com/johnma02/Convex-hull-visualization/blob/master/sample.csv) for a formatting guide.
+
+
 ### Dependencies
 Get started with Python installation [here](https://www.python.org/downloads/) (Python 3.X ≥ **required**).
 
