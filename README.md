@@ -19,7 +19,7 @@ Currently, only CSV files are supported for use. See [sample.csv](https://github
 **If your machine has [Anaconda](https://www.anaconda.com/) installed, Python, Matplotlib, PiP, and Numpy will already be available and ready for use.**
 
 
-*If you can install Anaconda, do so -- this will make this process a lot easier.*
+*If you can install Anaconda, please do so -- this will make this process a lot easier.*
 
 
 **PyQt5 will still need to be installed.**
