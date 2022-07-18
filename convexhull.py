@@ -3,7 +3,6 @@ import numpy as np
 from scipy import linalg
 from matplotlib.animation import FuncAnimation
 
-
 def load_data(fname: str) -> np.ndarray:
     coordinates = np.unique(np.genfromtxt(fname, delimiter=","), axis=0)
     return coordinates
@@ -22,7 +21,7 @@ def is_left_turn(p1: list, p2: list, p3: list) -> bool:
          [p1[1], p2[1], p3[1]],
          [1.0, 1.0, 1.0]]
     )
-    return True if linalg.det(matrix) > 0 else False  # negative determinant implies clockwise orientation of vectors
+    return True if linalg.det(matrix) >= 0 else False  # negative determinant implies clockwise orientation of vectors
 
 
 def graham_scan(coordinates: np.ndarray) -> np.ndarray:
@@ -65,8 +64,14 @@ class Animator:
     fig, ax = plt.subplots()
 
     def __init__(self, sorted_points: np.ndarray):
+        self.instructions_list.clear()
         self.instructions_list = self.instructions_compiler(sorted_points)
         self.sorted_points = sorted_points
+        self.fig.clear()
+        self.ax.clear()
+        self.fig, self.ax = plt.subplots()
+        self.anim_hull.clear()
+
 
     def instructions_compiler(self, sorted_points: np.ndarray) -> dict:
         instructions_list = {}
@@ -83,9 +88,9 @@ class Animator:
         return instructions_list
 
     def update(self, frame):
-        plt.style.use('Solarize_Light2')
         self.ax.clear()
         self.ax.grid(False)
+        color = ''
         if self.instructions_list[frame][0] == 'Push':
             self.anim_hull.append(self.instructions_list[frame][1])
             color = 'blue'
@@ -94,15 +99,11 @@ class Animator:
             color = 'red'
         x1, y1 = self.sorted_points.T
         self.ax.scatter(x1, y1, color='black')
-        x2, y2 = np.array(self.anim_hull).T
+        x2, y2 = np.array(self.anim_hull).T 
         self.ax.plot(x2[:-1], y2[:-1], marker='o', color='blue')
         self.ax.plot(x2[-2:], y2[-2:], marker='o', color=color)
-
+        self.ax.scatter(x2,y2,color='black')
+        
     def animate(self):
-        anim = FuncAnimation(self.fig, self.update, frames=range(0, len(self.instructions_list)), interval=1000)
+        anim = FuncAnimation(self.fig, self.update, frames=range(0, len(self.instructions_list)), interval=1000, cache_frame_data=False)
         anim.save('gscan.gif', fps=10)
-
-
-def save_animation(sorted_points: np.ndarray):
-    new_animator = Animator(sorted_points)
-    new_animator.animate()

@@ -1,11 +1,17 @@
 from PyQt5.QtGui import QPixmap, QMovie
-
+from matplotlib import pyplot as plt
 import convexhull
 import sys
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QFileDialog, QLabel, QComboBox, QFrame
 
+def clear_all_plots():
+            fig = plt.figure()
+            plt.figure().clear()
+            plt.close()
+            plt.cla()
+            plt.clf()
 
 class UI(QMainWindow):
     def __init__(self):
@@ -46,12 +52,13 @@ class UI(QMainWindow):
         self.loadingtext()
         fname, _ = QFileDialog.getOpenFileName(self, "Open CSV File", "~", "CSV Files(*.csv);;TXT Files(*.txt)")
         if fname:
+            clear_all_plots()
             coordinates = convexhull.load_data(fname)
             self.coords.setText(str(coordinates))
             sorted_points = convexhull.graham_scan(coordinates)
-            convexhull.save_animation(sorted_points)
-            pixmap = QPixmap("init.png")
-            self.display.setPixmap(pixmap)
+            animation = convexhull.Animator(sorted_points)
+            animation.animate()
+            self.change_display()
 
         self.loading.setText("")
         self.loading.setFrameShape(QFrame.NoFrame)
