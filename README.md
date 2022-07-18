@@ -3,7 +3,7 @@
 ![alt-text](https://github.com/johnma02/Convex-hull-visualization/blob/master/gscan.gif)
 
 
-Using [Matplotlib](https://matplotlib.org/), [Numpy](https://numpy.org/), [SciPy](https://scipy.org/), and [Qt](https://www.qt.io/qt-for-python) for Python, this application visualizes the implementation of the Graham Scan, and finds the [convex hull](https://mathworld.wolfram.com/ConvexHull.html) of a finite set of points in ℝ².
+Using [Matplotlib](https://matplotlib.org/), [Numpy](https://numpy.org/), and [Qt](https://www.qt.io/qt-for-python) for Python, this GUI application visualizes the implementation of the Graham Scan, and finds the [convex hull](https://mathworld.wolfram.com/ConvexHull.html) of a finite set of points in ℝ².
 
 
 ### Running
