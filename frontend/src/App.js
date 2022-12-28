@@ -38,11 +38,11 @@ class CoordinateInput extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} style={{position : "absolute", left : "24px"}}>
+      <form onSubmit={this.handleSubmit} style={{position : "absolute", left : "89px"}}>
         <label>
           Points:
           <br></br>
-          <textarea value={this.state.value} onChange={this.handleChange} style={{height : "550px", width : "100px", fontSize : "40px",}} />
+          <textarea value={this.state.value} onChange={this.handleChange} style={{height : "510px", width : "465px", fontSize : "40px",}} />
           <br></br>
         </label>
         <input type="submit" value="Submit" />
@@ -54,17 +54,17 @@ class CoordinateInput extends React.Component {
 function Preview() {
   return (
     <div>
-      <img src={require('./gscan.gif')} alt={"Finished!"} style={{position: "absolute", right : "100px", top : "20px",
-    height : "750px", width : "850px"}}/>
+      <img src={require('./gscan.gif')} alt={"Finished!"} style={{position: "absolute", right : "10px", bottom : "15px",
+    height : "800px", width : "800px"}}/>
     </div>
   );
 }
 export default function MyApp() {
   return (
     <div>
-      <h1 style={{position: "relative", left: "20px"}}>Graham Scan Visualizer</h1>
-      <p style={{position: "relative", left: "24px"}}>Input some coordinates and watch the magic happen.</p>
-      <p style={{position: "relative", left: "24px"}}>Every two space seperated values will be considered a 2D point.</p>
+      <h1 style={{position: "relative", left: "85px"}}>Graham Scan Visualizer</h1>
+      <p style={{position: "relative", left: "89px"}}>Input some coordinates and watch the magic happen.</p>
+      <p style={{position: "relative", left: "89px"}}>Every two space seperated values will be considered a 2D point.</p>
       <Preview />
       <CoordinateInput />
     </div>
