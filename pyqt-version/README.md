@@ -1,3 +1,5 @@
+### THIS VERSION OF THE PROJECT IS DEPRECATED! HOWEVER IT IS STILL FUNCTIONAL!
+
 ### Visualizing Graham's Convex Hull Algorithm Using Python
 [The Graham Scan](https://mathweb.ucsd.edu/~ronspubs/72_10_convex_hull.pdf) is one of the most well-known algorithms in computing history.
 ![alt-text](https://github.com/johnma02/Convex-hull-visualization/blob/master/gscan.gif)
