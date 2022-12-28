@@ -1,7 +1,7 @@
 # Work in progress.
  
 # Todo
-- [ ] implement firebase dbms
+- [ ] implement monngodb submission history feature
 - [ ] moar buttons 
     - [ ] button for random input
     - [ ] button for new colors
