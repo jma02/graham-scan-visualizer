@@ -40,12 +40,3 @@ html, body {
     transform: rotate(360deg);
   }
 }
-
-.scroll {
-  display: flex;
-  width: 10%;
-  border: 1px solid black;
-  border-radius: 15px;
-  height: 1080px;
-  align-items:right;
-}

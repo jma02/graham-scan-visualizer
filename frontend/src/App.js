@@ -1,13 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'
+
+var sub_id = 0;
 
 class CoordinateInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '0 0 \n1 3 \n5 2\n'
+      value: '0 0 \n1 3 \n5 2\n',
+      loading: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -18,20 +20,38 @@ class CoordinateInput extends React.Component {
     this.setState({value: event.target.value});
   }
 
-  handleSubmit(event) {
-    if(this.state.value.match(/^[0-9.\s]+$/)){
-      this.state.value = this.state.value.trim()
-      this.state.value = this.state.value.replace("/s{2,}/g",''); 
-      const arr = this.state.value.split(' ');
-      if(arr.length % 2 != 0){
-        alert('You must enter an even number of values!');
-      } 
+  async handleSubmit(event) {
+    var sub = this.state.value.replace(/\s+/g,' ').trim();
+    if(sub.match(/^[0-9.\s]+$/)){
+      var arr = sub.split(' ');
+      if(arr.length % 2 == 0){
+        event.preventDefault();
+        this.setState({
+        loading: true,
+      })
+
+      var api_post = new Object();
+      api_post.id = sub_id;
+      api_post.vals = sub;
+      sub_id+=1;
+      await fetch('/addsubmission/', 
+      {
+        'method' : 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        api_post:JSON.stringify(api_post),
+      })
+      .then(response => response.json())
+      .catch(error => console.log(error));
+      alert("Successfully logged!");
+      }
       else{
-        alert('An essay was submitted: ' + this.state.value);
+        alert("You must enter an even number of values!");
       }
     }
-    else{
-        alert('Your values must consist purely of real numbers!');
+      else{
+        alert("You must enter only numerical values!");
       }
     event.preventDefault();
   }
