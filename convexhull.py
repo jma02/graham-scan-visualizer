@@ -3,6 +3,7 @@ import numpy as np
 from scipy import linalg
 from matplotlib.animation import FuncAnimation
 import matplotlib
+import sys
 matplotlib.use('Agg')
 
 #csv option
@@ -34,7 +35,6 @@ def graham_scan(coordinates: np.ndarray) -> np.ndarray:
         if i[1] == y_min[1]:
             y_mins = np.append(y_mins, [i], axis=0)  # reshaping i into 2d array
     starting_point = np.amax(y_mins, axis=0)  # finding max x value
-
     # step 2 of graham scan -- sort points by polar angle to starting point
     sorted_points = coordinates.tolist()
     sorted_points.sort(key=lambda p: polar_angle_sort(p, starting_point))  # convert to python list to use custom sort
@@ -63,6 +63,7 @@ class Animator:
     instructions_list = {}
     sorted_points = None
     fig, ax = plt.subplots()
+    save_point = 0
 
     def __init__(self, sorted_points: np.ndarray):
         self.instructions_list.clear()
@@ -86,7 +87,7 @@ class Animator:
             hull.append(sorted_points[i].tolist())
             instructions_list[j] = ['Push', sorted_points[i]]
             j += 1
-        instructions_list[len(sorted_points)] = ['Push', hull[0]]
+        instructions_list[j] = ['Push', hull[0]]
         return instructions_list
 
     def update(self, frame):
@@ -108,4 +109,4 @@ class Animator:
         
     def animate(self):
         anim = FuncAnimation(self.fig, self.update, frames=range(0, len(self.instructions_list)), interval=1000, cache_frame_data=False)
-        anim.save('frontend/src/gscan.gif', fps=3)
+        anim.save('frontend/src/gifs/gscan.gif', fps=3)

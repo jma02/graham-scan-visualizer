@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import gscan from './gscan.gif'
+import gscan from './gifs/gscan.gif'
 import './App.css';
 import React, { useEffect, useState } from 'react';
 
@@ -8,8 +8,7 @@ class CoordinateInput extends React.Component {
     super(props);
 
     this.state = {
-      value: "",
-      loading: false
+      value: window.localStorage.getItem('value'),
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,40 +19,38 @@ class CoordinateInput extends React.Component {
     this.setState({value: event.target.value});
   }
 
+  
   async handleSubmit(event) {
+    event.preventDefault();
     var sub = this.state.value.replace(/\s+/g,' ').trim();
     if(sub.match(/^[0-9.\s]+$/)){
       var arr = sub.split(' ');
       if(arr.length % 2 == 0){
-        event.preventDefault();
-        this.setState({
-        loading: true,
-      })
-
-      var api_post = new Object();
-      api_post.vals = sub;
-      await fetch('http://localhost:8000/addsubmission', 
-      {
-        'method' : 'POST',
-        headers: {
-          'Content-Type':'application/json'
-        },
-        body:JSON.stringify(api_post)
-      });
-      }
+        var api_post = new Object();
+        api_post.vals = sub;
+        await fetch('http://localhost:8000/addsubmission', 
+        {
+          'method' : 'POST',
+          headers: {
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify(api_post)
+        });
+        }
       else{
         alert("You must enter an even number of values!");
       }
     }
-      else{
-        alert("You must enter only numerical values!");
-      }
-    event.preventDefault();
+    else{
+      alert("You must enter only numerical values!");
+    }
     this.setState({value: this.state.value});
+    window.localStorage.setItem('value', this.state.value);
   }
 
   render() {
     return (
+      <div>
       <form onSubmit={this.handleSubmit} style={{position : "absolute", left : "89px"}}>
         <label>
           Points:
@@ -63,6 +60,7 @@ class CoordinateInput extends React.Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      </div>
     );
   }
 }
@@ -75,6 +73,7 @@ class Preview extends React.Component {
     </div>
   };
 }
+
 export default function MyApp() {
   return (
     <div>
@@ -82,7 +81,7 @@ export default function MyApp() {
       <p style={{position: "relative", left: "89px"}}>Input some coordinates and watch the magic happen.</p>
       <p style={{position: "relative", left: "89px"}}>Every two space seperated values will be considered a 2D point.</p>
       <CoordinateInput />
-      <Preview />
+      <Preview/>
     </div>
   );
 }
