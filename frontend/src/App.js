@@ -19,7 +19,6 @@ class CoordinateInput extends React.Component {
   }
 
   async handleSubmit(event) {
-    this.setState({value: this.state.value});
     var sub = this.state.value.replace(/\s+/g,' ').trim();
     if(sub.match(/^[0-9.\s]+$/)){
       var arr = sub.split(' ');

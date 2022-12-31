@@ -6,5 +6,5 @@
     - [ ] button for random input
     - [ ] button for new colors
     - [ ] dark mode
-- [ ] finish react/flask communications
+- [x] finish react/flask communications
 - [ ] styling
