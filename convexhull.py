@@ -2,11 +2,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy import linalg
 from matplotlib.animation import FuncAnimation
+import matplotlib
+matplotlib.use('Agg')
 
+#csv option
 def load_data(fname: str) -> np.ndarray:
     coordinates = np.unique(np.genfromtxt(fname, delimiter=","), axis=0)
     return coordinates
-
 
 def polar_angle_sort(p1, p2) -> float:
     if p1[1] == p2[1]:
@@ -105,4 +107,4 @@ class Animator:
         
     def animate(self):
         anim = FuncAnimation(self.fig, self.update, frames=range(0, len(self.instructions_list)), interval=1000, cache_frame_data=False)
-        anim.save('gscan.gif', fps=10)
+        anim.save('frontend/src/gscan.gif', fps=10)

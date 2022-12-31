@@ -2,8 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react';
 
-var sub_id = 0;
-
 class CoordinateInput extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +19,7 @@ class CoordinateInput extends React.Component {
   }
 
   async handleSubmit(event) {
+    this.setState({value: this.state.value});
     var sub = this.state.value.replace(/\s+/g,' ').trim();
     if(sub.match(/^[0-9.\s]+$/)){
       var arr = sub.split(' ');
@@ -31,10 +30,8 @@ class CoordinateInput extends React.Component {
       })
 
       var api_post = new Object();
-      api_post.id = sub_id;
       api_post.vals = sub;
-      sub_id+=1;
-      
+      this.setState({value: this.state.value});
       await fetch('http://localhost:8000/addsubmission', 
       {
         'method' : 'POST',
@@ -43,8 +40,6 @@ class CoordinateInput extends React.Component {
         },
         body:JSON.stringify(api_post)
       });
-      alert("Successfully logged!");
-      await fetch('/ping');
       }
       else{
         alert("You must enter an even number of values!");

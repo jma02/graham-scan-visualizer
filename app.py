@@ -26,10 +26,10 @@ def update_gif(id):
         while(i < len(pts)):
             cartesian += [[pts[i], pts[i+1]]]
             i+=2
-        print(np.array(cartesian), file=sys.stderr)
         processed_pts = graham_scan(np.array(cartesian))
         create_gif = Animator(processed_pts)
         create_gif.animate()
+        return
 
 @app.route('/addsubmission', methods=['POST'])
 def addsubmission():
