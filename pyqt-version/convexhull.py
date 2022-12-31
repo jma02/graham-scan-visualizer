@@ -3,11 +3,6 @@ import numpy as np
 from scipy import linalg
 from matplotlib.animation import FuncAnimation
 
-def load_data(fname: str) -> np.ndarray:
-    coordinates = np.unique(np.genfromtxt(fname, delimiter=","), axis=0)
-    return coordinates
-
-
 def polar_angle_sort(p1, p2) -> float:
     if p1[1] == p2[1]:
         return float('inf')
@@ -26,9 +21,10 @@ def is_left_turn(p1: list, p2: list, p3: list) -> bool:
 
 def graham_scan(coordinates: np.ndarray) -> np.ndarray:
     # step 1 of graham scan -- find the minimum y-coordinate, if more than 1, find max x value of set
+    print(coordinates, file=sys.stderr)
     y_min = np.amin(coordinates, axis=0)  # find minimum y value
-    y_mins = y_min.reshape([1, 2])
     for i in coordinates:
+        print(i, file=sys.stderr)
         if i[1] == y_min[1]:
             y_mins = np.append(y_mins, [i], axis=0)  # reshaping i into 2d array
     starting_point = np.amax(y_mins, axis=0)  # finding max x value
@@ -105,4 +101,4 @@ class Animator:
         
     def animate(self):
         anim = FuncAnimation(self.fig, self.update, frames=range(0, len(self.instructions_list)), interval=1000, cache_frame_data=False)
-        anim.save('gscan.gif', fps=10)
+        anim.save('frontend/src/gscan.gif', fps=10)

@@ -34,17 +34,17 @@ class CoordinateInput extends React.Component {
       api_post.id = sub_id;
       api_post.vals = sub;
       sub_id+=1;
-      await fetch('/addsubmission/', 
+      
+      await fetch('http://localhost:8000/addsubmission', 
       {
         'method' : 'POST',
         headers: {
           'Content-Type':'application/json'
         },
-        api_post:JSON.stringify(api_post),
-      })
-      .then(response => response.json())
-      .catch(error => console.log(error));
+        body:JSON.stringify(api_post)
+      });
       alert("Successfully logged!");
+      await fetch('/ping');
       }
       else{
         alert("You must enter an even number of values!");
