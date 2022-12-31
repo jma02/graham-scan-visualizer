@@ -86,6 +86,7 @@ class Animator:
             hull.append(sorted_points[i].tolist())
             instructions_list[j] = ['Push', sorted_points[i]]
             j += 1
+        instructions_list[len(sorted_points)] = ['Push', hull[0]]
         return instructions_list
 
     def update(self, frame):
@@ -107,4 +108,4 @@ class Animator:
         
     def animate(self):
         anim = FuncAnimation(self.fig, self.update, frames=range(0, len(self.instructions_list)), interval=1000, cache_frame_data=False)
-        anim.save('frontend/src/gscan.gif', fps=10)
+        anim.save('frontend/src/gscan.gif', fps=3)

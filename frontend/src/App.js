@@ -49,6 +49,7 @@ class CoordinateInput extends React.Component {
         alert("You must enter only numerical values!");
       }
     event.preventDefault();
+    this.setState({value: this.state.value});
   }
 
   render() {
