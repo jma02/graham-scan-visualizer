@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "mongodb": "^4.13.0"
+    "mongodb": "^4.13.0",
+    "node": "^19.3.0"
   },
   "proxy": "http://localhost:8000"
 }

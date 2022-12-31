@@ -1,12 +1,14 @@
 import logo from './logo.svg';
+import gscan from './gscan.gif'
 import './App.css';
 import React, { useEffect, useState } from 'react';
 
 class CoordinateInput extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      value: '0 0 \n1 3 \n5 2\n',
+      value: "",
       loading: false
     };
 
@@ -30,7 +32,6 @@ class CoordinateInput extends React.Component {
 
       var api_post = new Object();
       api_post.vals = sub;
-      this.setState({value: this.state.value});
       await fetch('http://localhost:8000/addsubmission', 
       {
         'method' : 'POST',
@@ -65,13 +66,13 @@ class CoordinateInput extends React.Component {
   }
 }
 
-function Preview() {
-  return (
-    <div>
-      <img src={require('./gscan.gif')} alt={"Finished!"} style={{position: "absolute", right : "10px", bottom : "15px",
+class Preview extends React.Component {
+  render() {
+   return <div>
+      <img src={gscan} alt={"Finished!"} style={{position: "absolute", right : "10px", bottom : "15px",
     height : "800px", width : "800px"}}/>
     </div>
-  );
+  };
 }
 export default function MyApp() {
   return (
@@ -81,7 +82,6 @@ export default function MyApp() {
       <p style={{position: "relative", left: "89px"}}>Every two space seperated values will be considered a 2D point.</p>
       <CoordinateInput />
       <Preview />
-
     </div>
   );
 }

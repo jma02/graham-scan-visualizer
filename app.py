@@ -15,6 +15,7 @@ api = Api(app)
 mongoClient = MongoClient('mongodb://127.0.0.1:27017')
 db = mongoClient.get_database('submissions_db')
 submissions_col = db.get_collection('submissions_col')
+ 
 
 def update_gif(id):
     if submissions_col.find({"_id":id}):
