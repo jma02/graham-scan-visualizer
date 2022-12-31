@@ -79,8 +79,9 @@ export default function MyApp() {
       <h1 style={{position: "relative", left: "85px"}}>Graham Scan Visualizer</h1>
       <p style={{position: "relative", left: "89px"}}>Input some coordinates and watch the magic happen.</p>
       <p style={{position: "relative", left: "89px"}}>Every two space seperated values will be considered a 2D point.</p>
-      <Preview />
       <CoordinateInput />
+      <Preview />
+
     </div>
   );
 }

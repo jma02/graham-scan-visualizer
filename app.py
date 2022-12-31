@@ -26,7 +26,7 @@ def update_gif(id):
         while(i < len(pts)):
             cartesian += [[pts[i], pts[i+1]]]
             i+=2
-        processed_pts = graham_scan(np.array(cartesian))
+        processed_pts = graham_scan(np.unique(np.array(cartesian), axis=0))
         create_gif = Animator(processed_pts)
         create_gif.animate()
         return
