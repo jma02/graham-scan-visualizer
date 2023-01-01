@@ -39,17 +39,13 @@ def addsubmission():
     
     result = submissions_col.insert_one({"vals": sub})
     update_gif(result.inserted_id)
+    print(result, file=sys.stderr)
     return {"result": str(result.inserted_id)}
   # Save the item to the database
 
 @app.route("/profile")
 def app_profile():
-    print("hello!", file=sys.stderr)
     return {"Systems": "Nominal"}
-
-@app.route("/ping")
-def ping():
-    return {"ping": "pong!"}
 
 if __name__ == "__main__":
     app.run(debug=True, port=8000)

@@ -2,13 +2,13 @@ import logo from './logo.svg';
 import gscan from './gifs/gscan.gif'
 import './App.css';
 import React, { useEffect, useState } from 'react';
-
+import Dropdown from './components/Dropdown'
 class CoordinateInput extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      value: window.localStorage.getItem('value'),
+      value: window.localStorage.getItem('value') || '0 0\n 2 0\n 0 2',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -55,7 +55,8 @@ class CoordinateInput extends React.Component {
         <label>
           Points:
           <br></br>
-          <textarea value={this.state.value} onChange={this.handleChange} style={{height : "510px", width : "465px", fontSize : "40px",}} />
+          <textarea value={this.state.value} onChange={this.handleChange} style={{height : "510px", width : "465px", fontSize : "40px",}} 
+                    maxlength={1000} />
           <br></br>
         </label>
         <input type="submit" value="Submit" />
@@ -80,8 +81,9 @@ export default function MyApp() {
       <h1 style={{position: "relative", left: "85px"}}>Graham Scan Visualizer</h1>
       <p style={{position: "relative", left: "89px"}}>Input some coordinates and watch the magic happen.</p>
       <p style={{position: "relative", left: "89px"}}>Every two space seperated values will be considered a 2D point.</p>
-      <CoordinateInput />
+      <CoordinateInput/>
       <Preview/>
+      <Dropdown placeHolder="Past Submissions" options={[{value: "red", label:"red"}]}/> 
     </div>
   );
 }
