@@ -1,0 +1,11 @@
+FROM python:3.9.7
+SHELL ["/bin/bash", "-c"]
+
+COPY . /dockerized_app
+ENV FLASK_ENV production
+
+EXPOSE 8000
+
+RUN pip install -r /dockerized_app/requirements.txt
+
+CMD ["python", "/dockerized_app/app.py"]

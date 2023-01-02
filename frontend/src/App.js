@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import gscan from './gifs/gscan.gif'
+import default_gif from './gifs/default.gif'
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import Dropdown from './components/Dropdown'
 class CoordinateInput extends React.Component {
   constructor(props) {
     super(props);
@@ -68,10 +68,18 @@ class CoordinateInput extends React.Component {
 
 class Preview extends React.Component {
   render() {
+    if(localStorage.getItem('value')){
    return <div>
       <img src={gscan} alt={"Finished!"} style={{position: "absolute", right : "10px", bottom : "15px",
     height : "800px", width : "800px"}}/>
     </div>
+    }
+    else{
+    return <div>
+      <img src={default_gif} alt={"Finished!"} style={{position: "absolute", right : "10px", bottom : "15px",
+    height : "800px", width : "800px"}}/>
+    </div>
+    }
   };
 }
 
@@ -83,7 +91,6 @@ export default function MyApp() {
       <p style={{position: "relative", left: "89px"}}>Every two space seperated values will be considered a 2D point.</p>
       <CoordinateInput/>
       <Preview/>
-      <Dropdown placeHolder="Past Submissions" options={[{value: "red", label:"red"}]}/> 
     </div>
   );
 }

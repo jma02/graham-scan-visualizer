@@ -1,7 +1,5 @@
 from flask import Flask, request, send_from_directory, redirect, url_for
 from flask_restful import Api, Resource, reqparse
-from flask_cors import CORS, cross_origin # comment this on deployment
-# from api.apihandler
 from convexhull import graham_scan, Animator
 from pymongo import MongoClient
 import json
@@ -9,7 +7,6 @@ import sys
 import numpy as np
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
-CORS(app) # comment this on deployment
 api = Api(app)
 
 mongoClient = MongoClient('mongodb://127.0.0.1:27017')
@@ -48,6 +45,6 @@ def app_profile():
     return {"Systems": "Nominal"}
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(host="0.0.0.0", debug=True, port=8000)
     
     

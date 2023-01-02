@@ -39,9 +39,9 @@ def graham_scan(coordinates: np.ndarray) -> np.ndarray:
     sorted_points = coordinates.tolist()
     sorted_points.sort(key=lambda p: polar_angle_sort(p, starting_point))  # convert to python list to use custom sort
     sorted_points = np.array(sorted_points)
-    x, y = sorted_points.T
-    plt.scatter(x, y, color='blue')
-    plt.savefig('init.png')  # save an initial image of our points
+    #x, y = sorted_points.T
+    #plt.scatter(x, y, color='blue')
+    #plt.savefig('init.png')  # save an initial image of our points
 
     # step 3 of graham scan -- using a stack, find the convex hull
     hull = []  # stack
@@ -51,10 +51,10 @@ def graham_scan(coordinates: np.ndarray) -> np.ndarray:
             hull.pop(-2)  # pop point if it forms a clockwise/right turn
         hull.append(i.tolist())
 
-    x, y = np.array(hull).T
-    plt.plot(x, y, marker='o', color='blue')
-    plt.plot((x[0], x[-1]), (y[0], y[-1]), marker='o', color='blue')
-    plt.savefig("hull.png")  # save initial image of convex hull
+    #x, y = np.array(hull).T
+    #plt.plot(x, y, marker='o', color='blue')
+    #plt.plot((x[0], x[-1]), (y[0], y[-1]), marker='o', color='blue')
+    #plt.savefig("hull.png")  # save initial image of convex hull
     return sorted_points
 
 
