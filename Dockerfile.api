@@ -1,11 +1,12 @@
 FROM python:3.9.7
 SHELL ["/bin/bash", "-c"]
+WORKDIR /app
 
-COPY . /dockerized_app
+COPY app.py requirements.txt convexhull.py ./
 ENV FLASK_ENV production
 
 EXPOSE 8000
 
-RUN pip install -r /dockerized_app/requirements.txt
+RUN pip install -r requirements.txt
 
-CMD ["python", "/dockerized_app/app.py"]
+CMD ["python", "app.py"]

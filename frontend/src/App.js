@@ -70,13 +70,13 @@ class Preview extends React.Component {
   render() {
     if(localStorage.getItem('value')){
    return <div>
-      <img src={gscan} alt={"Finished!"} style={{position: "absolute", right : "10px", bottom : "15px",
+      <img src={gscan} alt={"Finished!"} style={{position: "relative", left : "600px", bottom : "178px",
     height : "800px", width : "800px"}}/>
     </div>
     }
     else{
     return <div>
-      <img src={default_gif} alt={"Finished!"} style={{position: "absolute", right : "10px", bottom : "15px",
+      <img src={default_gif} alt={"Finished!"} style={{position: "relative", right : "600px", bottom : "178px",
     height : "800px", width : "800px"}}/>
     </div>
     }
