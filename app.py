@@ -33,11 +33,17 @@ def update_gif(id):
 
 @app.route('/addsubmission', methods=['POST'])
 def addsubmission():
+    print("here", file=sys.stderr)
     data = request.get_json()
+    print("here2", file=sys.stderr)
+
     sub = data['vals']
     
     result = submissions_col.insert_one({"vals": sub})
+    print("here3", file=sys.stderr)
     update_gif(result.inserted_id)
+    print("here4", file=sys.stderr)
+
     return {"result": str(result.inserted_id)}
   # Save the item to the database
 
