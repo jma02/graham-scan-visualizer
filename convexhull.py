@@ -4,6 +4,7 @@ from scipy import linalg
 from matplotlib.animation import FuncAnimation
 import matplotlib
 import sys
+import subprocess
 matplotlib.use('Agg')
 
 #csv option
@@ -109,4 +110,4 @@ class Animator:
         
     def animate(self):
         anim = FuncAnimation(self.fig, self.update, frames=range(0, len(self.instructions_list)), interval=1000, cache_frame_data=False)
-        anim.save('frontend/src/gifs/gscan.gif', fps=3)
+        anim.save('gscan.gif', fps=3)

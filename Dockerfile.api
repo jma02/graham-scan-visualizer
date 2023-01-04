@@ -2,7 +2,8 @@ FROM python:3.9.7
 SHELL ["/bin/bash", "-c"]
 WORKDIR /app
 
-COPY app.py requirements.txt convexhull.py ./
+COPY app.py ./
+COPY requirements.txt convexhull.py ./
 ENV FLASK_ENV production
 
 EXPOSE 8000

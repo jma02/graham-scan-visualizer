@@ -1,4 +1,4 @@
-from flask import Flask, request, send_from_directory, redirect, url_for
+from flask import Flask, request, send_from_directory, redirect, url_for, send_file
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS, cross_origin 
 from convexhull import graham_scan, Animator
@@ -12,6 +12,7 @@ CORS(app)
 api = Api(app)
 
 mongoClient = MongoClient('mongodb://127.0.0.1:27017')
+#mongoClient = MongoClient('mongodb:27017', username="root", password="rootpassword") docker
 db = mongoClient.get_database('submissions_db')
 submissions_col = db.get_collection('submissions_col')
  
@@ -29,22 +30,18 @@ def update_gif(id):
         processed_pts = graham_scan(np.unique(np.array(cartesian), axis=0))
         create_gif = Animator(processed_pts)
         create_gif.animate()
-        return
+        return 
 
 @app.route('/addsubmission', methods=['POST'])
 def addsubmission():
-    print("here", file=sys.stderr)
     data = request.get_json()
-    print("here2", file=sys.stderr)
 
     sub = data['vals']
     
     result = submissions_col.insert_one({"vals": sub})
-    print("here3", file=sys.stderr)
     update_gif(result.inserted_id)
-    print("here4", file=sys.stderr)
 
-    return {"result": str(result.inserted_id)}
+    return send_file("gscan.gif", mimetype="image/gif")
   # Save the item to the database
 
 @app.route("/profile")

@@ -3,13 +3,25 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.api
-    image: react-flask-app-api
+    image: gsapp-api
     ports:
       - "8000:8000" 
   client:
     build:
       context: ./frontend
       dockerfile: Dockerfile.client
-    image: react-flask-app-client
+    image: gsapp-client
     ports:
       - "3000:80"
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+volumes:
+  mongodb_data_container:
+  

@@ -1,6 +1,6 @@
 import logo from './logo.svg';
-import gscan from './gifs/gscan.gif'
 import default_gif from './gifs/default.gif'
+import gscan from './gifs/gscan.gif'
 import './App.css';
 import React, { useEffect, useState } from 'react';
 class CoordinateInput extends React.Component {
@@ -35,6 +35,11 @@ class CoordinateInput extends React.Component {
             'Content-Type':'application/json'
           },
           body:JSON.stringify(api_post)
+        })
+        .then(response => response.blob())
+        .then(blob => {
+          const objURL = URL.createObjectURL(blob);
+          // gscan.src = objURL;
         });
         }
       else{
