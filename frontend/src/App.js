@@ -21,7 +21,7 @@ class CoordinateInput extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     var sub = this.state.value.replace(/\s+/g,' ').trim();
-    if(sub.match(/^-?[0-9]\d*(\.\d+)?$/)){
+    if(sub.match(/^-?[0-9]\d*(\.\d+)\s?$/)){
       var arr = sub.split(' ');
       if(arr.length % 2 == 0){
         var api_post = new Object();
