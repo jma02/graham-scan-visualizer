@@ -3,7 +3,7 @@ SHELL ["/bin/bash", "-c"]
 WORKDIR /app
 
 COPY app.py ./
-COPY requirements.txt convexhull.py ./
+COPY requirements.txt convexhull.py ./api
 ENV FLASK_ENV production
 
 EXPOSE 8000
