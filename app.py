@@ -11,8 +11,8 @@ app = Flask(__name__, static_url_path='/', static_folder='frontend/build')
 CORS(app)
 api = Api(app)
 
-mongoClient = MongoClient('mongodb://127.0.0.1:27017')
-#mongoClient = MongoClient('mongodb:27017', username="root", password="rootpassword") docker
+#mongoClient = MongoClient('mongodb://127.0.0.1:27017')
+mongoClient = MongoClient('mongodb:27017', username="root", password="rootpassword")
 db = mongoClient.get_database('submissions_db')
 submissions_col = db.get_collection('submissions_col')
  

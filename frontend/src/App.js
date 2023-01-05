@@ -39,7 +39,7 @@ class CoordinateInput extends React.Component {
         .then(response => response.blob())
         .then(blob => {
           const objURL = URL.createObjectURL(blob);
-          // gscan.src = objURL;
+          gscan = objURL;
         });
         }
       else{
@@ -66,6 +66,7 @@ class CoordinateInput extends React.Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      <Preview/>
       </div>
     );
   }
@@ -80,8 +81,8 @@ class Preview extends React.Component {
     </div>
     }
     else{
-    return <div>
-      <img src={default_gif} alt={"Finished!"} style={{position: "relative", right : "600px", bottom : "178px",
+      return <div>
+      <img src={default_gif} alt={"Finished!"} style={{position: "relative", left : "600px", bottom : "178px",
     height : "800px", width : "800px"}}/>
     </div>
     }
@@ -95,7 +96,6 @@ export default function MyApp() {
       <p style={{position: "relative", left: "89px"}}>Input some coordinates and watch the magic happen.</p>
       <p style={{position: "relative", left: "89px"}}>Every two space seperated values will be considered a 2D point.</p>
       <CoordinateInput/>
-      <Preview/>
     </div>
   );
 }
