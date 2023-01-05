@@ -1,7 +1,5 @@
-# Work in progress.
- 
-# Todo
+ # Todo
 - [ ] implement mongo db submission history feature
 - [x] finish react/flask communications
-- [ ] finish docker image
-- [ ] finish deploying to oracle
+- [x] finish docker image
+- [x] finish deploying to oracle
