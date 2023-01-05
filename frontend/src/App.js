@@ -1,7 +1,6 @@
-import default_gif from './gifs/default.gif'
 import gscan from './gifs/default.gif'
 import './App.css';
-import React from 'react';
+import React  from 'react';
 class CoordinateInput extends React.Component {
   constructor(props) {
     super(props);
@@ -72,18 +71,10 @@ class CoordinateInput extends React.Component {
 
 class Preview extends React.Component {
   render() {
-    if(localStorage.getItem('value')){
-   return <div>
-      <img src={gscan} alt={"Finished!"} style={{position: "relative", left : "600px", bottom : "178px",
-    height : "800px", width : "800px"}}/>
-    </div>
-    }
-    else{
-      return <div>
-      <img src={default_gif} alt={"Finished!"} style={{position: "relative", left : "600px", bottom : "178px",
-    height : "800px", width : "800px"}}/>
-    </div>
-    }
+    return <div>
+    <img src={gscan} alt={"Finished!"} style={{position: "relative", left : "600px", bottom : "178px",
+  height : "800px", width : "800px"}}/>
+  </div>
   };
 }
 
