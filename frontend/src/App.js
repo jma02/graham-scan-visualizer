@@ -26,7 +26,7 @@ class CoordinateInput extends React.Component {
       if(arr.length % 2 == 0){
         var api_post = new Object();
         api_post.vals = sub;
-        await fetch('http://localhost:8000/addsubmission', 
+        await fetch('http://localhost:8000/api/addsubmission', 
         {
           'method' : 'POST',
           headers: {

@@ -32,7 +32,7 @@ def update_gif(id):
         create_gif.animate()
         return 
 
-@app.route('/addsubmission', methods=['POST'])
+@app.route('/api/addsubmission', methods=['POST'])
 def addsubmission():
     data = request.get_json()
 
