@@ -1,14 +1,13 @@
-import logo from './logo.svg';
 import default_gif from './gifs/default.gif'
-import gscan from './gifs/gscan.gif'
+import gscan from './gifs/default.gif'
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 class CoordinateInput extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      value: window.localStorage.getItem('value') || '0 0\n 2 0\n 0 2',
+      value: '0 0\n2 0\n0 2',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -50,7 +49,6 @@ class CoordinateInput extends React.Component {
       alert("You must enter only numerical values!");
     }
     this.setState({value: this.state.value});
-    window.localStorage.setItem('value', this.state.value);
   }
 
   render() {
