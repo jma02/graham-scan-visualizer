@@ -19,7 +19,7 @@ submissions_col = db.get_collection('submissions_col')
 
 def update_gif(id):
     if submissions_col.find({"_id":id}):
-        pts = list(map(lambda x : int(x), submissions_col.find_one({"_id":id})['vals'].split()))
+        pts = list(map(lambda x : float(x), submissions_col.find_one({"_id":id})['vals'].split()))
     
         cartesian = []
 
