@@ -6,6 +6,9 @@ services:
     image: gsapp-api
     ports:
       - "8000:8000" 
+    depends_on:
+      - client
+  
   client:
     build:
       context: ./frontend
@@ -13,6 +16,8 @@ services:
     image: gsapp-client
     ports:
       - "3000:80"
+    depends_on:
+      - mongodb
   mongodb:
     image: mongo:latest
     environment:
