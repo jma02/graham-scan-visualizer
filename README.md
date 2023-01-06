@@ -1,4 +1,4 @@
- [grahamscan.app](grahamscan.app)
+ [grahamscan.app](http://grahamscan.app)
 
  # Todo
 - [ ] implement mongo db submission history feature
