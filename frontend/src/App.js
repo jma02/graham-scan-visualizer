@@ -21,8 +21,8 @@ class CoordinateInput extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     var sub = this.state.value.replace(/\s+/g,' ').trim();
-    if(sub.match(/((?:\d+(?:\.\d+)?)\/(?:\d+(?:\.\d+)?))|((?:[+-]?\d+(?:\.\d+)?)?[+-]?(?:\d+(?:\.\d+)?)?i)|([+-]?\d+(?:\.\d+)?)/)){
-      var arr = sub.split(' ');
+    if(sub.match(/((?:\d+(?:\.\d+)?)\/(?:\d+(?:\.\d+)?))|((?:[+-]?\d+(?:\.\d+)?)?[+-]?(?:\d+(?:\.\d+)?)?i)|([+-]?\d+(?:\.\d+)?)/g)){
+      var arr = sub.match(/((?:\d+(?:\.\d+)?)\/(?:\d+(?:\.\d+)?))|((?:[+-]?\d+(?:\.\d+)?)?[+-]?(?:\d+(?:\.\d+)?)?i)|([+-]?\d+(?:\.\d+)?)/g);
       if(arr.length % 2 == 0){
         var api_post = new Object();
         api_post.vals = sub;
