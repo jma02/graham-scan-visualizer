@@ -1,35 +1,37 @@
 module.exports = {
-    env: {
-        browser: true,
-        es2021: true
+    "env": {
+        "browser": true,
+        "es2021": true
     },
-    extends: [
+    "extends": [
+        "eslint:recommended",
         "plugin:react/recommended",
-        "standard"
+        "plugin:@typescript-eslint/recommended"
     ],
-    overrides: [
+    "overrides": [
     ],
-    parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module"
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
     },
-    plugins: [
-        "react"
+    "plugins": [
+        "react",
+        "@typescript-eslint"
     ],
-    rules: {
+    "rules": {
         "no-extra-parens": [
             "warn",
             "all",
             {
-                nestedBinaryExpressions: false,
-                returnAssign: false,
-                enforceForArrowConditionals: false,
-                ignoreJSX: "all"
+                "nestedBinaryExpressions": false,
+                "returnAssign": false,
+                "enforceForArrowConditionals": false,
+                "ignoreJSX": "all"
             }
         ],
         "brace-style": ["error", "1tbs"],
-        indent: ["error", 4],
-        quotes: ["error", "double"],
-        semi: ["error", "always"]
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"]
     }
 };
