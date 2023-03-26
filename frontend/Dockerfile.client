@@ -3,10 +3,8 @@ FROM node:16-alpine as build-step
 WORKDIR /app
 ENV PATH node_modules/.bin:$PATH
 COPY package.json ./
-COPY src ./src
-COPY public ./public
+COPY . ./
 RUN npm install
-RUN echo ls
 RUN npm run build
 # Build step #2: build an nginx container
 FROM nginx:stable-alpine

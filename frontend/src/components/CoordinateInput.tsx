@@ -3,10 +3,9 @@ import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import "../App.css";
 type ChangeEvent = React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>;
 
-
 export function CoordinateInput(): JSX.Element {
     const [points, setPoints] = useState<string>("0 0 2 0 0 2");
-    const [gif, setGif] = useState<string>(".default.gif");
+    const [gif, setGif] = useState<string>("./default.gif");
 
     function handleChange (event: ChangeEvent) {
         const re = /^[0-9\b\s\n\r]+$/;
@@ -62,7 +61,7 @@ export function CoordinateInput(): JSX.Element {
                         </Col>
                         <Col>
                             <div className="card">
-                                <img src={gif} alt={"Finished Rendering"}></img>
+                                <img src={gif} alt="Finished Rendering"></img>
                             </div></Col>
                     </Row>
                 </Container>

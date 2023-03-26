@@ -44,7 +44,7 @@ def addsubmission():
     return send_file("gscan.gif", mimetype="image/gif")
   # Save the item to the database
 
-@app.route("/profile")
+@app.route("/api/profile")
 def app_profile():
     return {"Systems": "Nominal"}
 
