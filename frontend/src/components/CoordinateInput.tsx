@@ -1,11 +1,12 @@
 import React, {useState} from "react";
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button} from "react-bootstrap";
 import "../App.css";
+import initialGif from "./default.gif";
 type ChangeEvent = React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>;
 
 export function CoordinateInput(): JSX.Element {
     const [points, setPoints] = useState<string>("0 0 2 0 0 2");
-    const [gif, setGif] = useState<string>("./default.gif");
+    const [gif, setGif] = useState<string>(initialGif);
 
     function handleChange (event: ChangeEvent) {
         const re = /^[0-9\b\s\n\r]+$/;
@@ -29,7 +30,7 @@ export function CoordinateInput(): JSX.Element {
                 })
                 .then(response => response.blob())
                 .then(blob => {
-                    const objURL = URL.createObjectURL(blob);
+                    const objURL = URL.createObjectURL(blob) as string;
                     setGif(objURL);
                 });
         } else {
@@ -43,28 +44,21 @@ export function CoordinateInput(): JSX.Element {
 
     return (
             <div>
-                <Container>
-                    <Row>
-                        <Col>
-                            <Form.Group className="align-items-start" controlId="pointsTextarea">
-                                <Form.Label>
-                                Points:
-                                </Form.Label>
-                                <br></br>
-                                <Form.Control type="textarea"
-                                    value={points}
-                                    onChange={handleChange}
-                                    required />
-                                <br></br>
-                                <Button onClick={handleSubmit}>Submit</Button>
-                            </Form.Group>
-                        </Col>
-                        <Col>
-                            <div className="card">
-                                <img src={gif} alt="Finished Rendering"></img>
-                            </div></Col>
-                    </Row>
-                </Container>
+                <Form.Group className="align-items-start" controlId="pointsTextarea">
+                    <Form.Label>
+                    Points:
+                    </Form.Label>
+                    <br></br>
+                    <Form.Control type="textarea"
+                        value={points}
+                        onChange={handleChange}
+                        required />
+                    <br></br>
+                    <Button onClick={handleSubmit}>Submit</Button>
+                </Form.Group>
+                <div className="card">
+                    <img src={gif} alt="Finished Rendering"></img>
+                </div>
             </div>
         );
     }
