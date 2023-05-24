@@ -3,11 +3,7 @@ module.exports = {
         "browser": true,
         "es2021": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
-    ],
+    "extends": "plugin:react/recommended",
     "overrides": [
     ],
     "parser": "@typescript-eslint/parser",
@@ -32,6 +28,7 @@ module.exports = {
         ],
         "brace-style": ["error", "1tbs"],
         "quotes": ["error", "double"],
-        "semi": ["error", "always"]
+        "semi": ["error", "always"],
+        "indent": ["error", 4],
     }
 };

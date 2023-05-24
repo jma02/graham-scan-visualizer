@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Form, Button} from "react-bootstrap";
+import { Form, Button, Container, Col} from "react-bootstrap";
 import "../App.css";
 import initialGif from "./default.gif";
 type ChangeEvent = React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>;
@@ -43,22 +43,40 @@ export function CoordinateInput(): JSX.Element {
     }
 
     return (
-            <div>
-                <Form.Group className="align-items-start" controlId="pointsTextarea">
+        <Container style={{ display: "flex" }} fluid>
+            <Col style={{ width: "100%", height: "100%", textAlign: "center", fontFamily:"monospace" }}>
+                <p>
+                Input some coordinates and watch the magic happen.
+                    <br/>
+                Every <b>2</b> white-space seperated
+                numbers will be considered a 2D-point.
+                </p>
+                <Form.Group
+                    className="align-items-start"
+                    controlId="pointsTextarea"
+                >
                     <Form.Label>
                     Points:
                     </Form.Label>
-                    <br></br>
-                    <Form.Control type="textarea"
+                    <br/>
+                    <Form.Control 
+                        as="textarea"
                         value={points}
                         onChange={handleChange}
-                        required />
-                    <br></br>
+                        size="lg"
+                        style={{ resize: "none" }}
+                        required
+                    
+                    />
+                    <br/>
                     <Button onClick={handleSubmit}>Submit</Button>
                 </Form.Group>
-                <div className="card">
-                    <img src={gif} alt="Finished Rendering"></img>
+            </Col>
+            <Col style={{ width: "100%", height: "100%" }}>
+                <div className="box" style={{height: "100%"}}>
+                    <img src={gif} alt="Finished Rendering" style={{ width: "100%", height: "100%" }}/>
                 </div>
-            </div>
-        );
-    }
+            </Col>
+        </Container>
+    );
+}
