@@ -15,8 +15,8 @@ def update_gif(sub):
 
     cartesian = []
 
-    i = 0
-    while(i < len(pts)):
+    i = 0                       # x & ~1 will floor an integer to the nearest even number
+    while(i < (len(pts) & ~1)): # if somehow a user manages to get an odd number of elements here
         cartesian += [[pts[i], pts[i+1]]]
         i+=2
     processed_pts = graham_scan(np.unique(np.array(cartesian), axis=0))
