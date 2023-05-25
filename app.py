@@ -11,7 +11,7 @@ CORS(app)
 api = Api(app)
 
 def update_gif(sub):
-    pts = list(map(lambda x : float(x), sub.split()))
+    pts = list(map(lambda x : float(x), sub))
 
     cartesian = []
 
