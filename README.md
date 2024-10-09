@@ -4,4 +4,4 @@
 
 There are two versions of this app: one written in React, and one written using Qt.
 This app is no longer hosted online, but you can easily demo this buy cloning this repo, and running the `app.py` file with Flask run, and the frontend using `npm run start`.
-As for the Qt version, you may demo this version buy running the `app.py`.
+As for the Qt version, you may demo this version buy running the `cvh.py` file.
